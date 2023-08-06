@@ -64,14 +64,6 @@ main{
 }
 .dark .search-container{
     box-shadow: 0 0 12px 0 rgba(255, 255, 255, 0.6);
-    border-radius: 4px;
-    max-width: 350px;
-    width: 100%;
-    padding-left: 24px;
-    overflow: hidden;
-    color: #999;
-    background-color: var(--background-color);
-    color: var(--text-color);
 }
 .search-container input{
     border: none;
@@ -99,14 +91,7 @@ main{
     
 }
 .dark .filter-container{
-    width: 200px;
-    padding: 0 8px;
-    border: none;
-    outline: none;
-    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.7);
-    background-color: var(--background-color);
-    color: var(--text-color);
-    
+    box-shadow: 0 0 8px 0 rgba(255, 255, 255, 0.7);   
 }
 .countries-container{
     max-width: 1200px;
