@@ -10,6 +10,7 @@ const topLevelDomain=document.querySelector('.top-level-domain');
 const currency=document.querySelector('.currency');
 const language=document.querySelector('.language');
 const borderCountrys=document.querySelector('.border');
+const themeChange=document.querySelector('.themeChange');
 
 fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
  .then((res)=> res.json())
@@ -74,31 +75,30 @@ fetch(`https://restcountries.com/v3.1/name/${countryName}?fullText=true`)
 
   
    //dark aur light mode with local storage 
-   const isDarkMode = localStorage.getItem('darkMode') === 'true';
+   
+function updateThemePreference(newTheme) {
+  document.body.classList.toggle('dark', newTheme);
 
-   // Update the text and icon based on the saved theme preference
-   if (isDarkMode) {
-     document.body.classList.add('dark');
-     themeChange.innerHTML = '<i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Light Mode';
-   } else {
-     document.body.classList.remove('dark');
-     themeChange.innerHTML = '<i class="fa-solid fa-sun"></i>&nbsp;&nbsp;Dark Mode';
-   }
-   
-   // Toggle the theme and update text/icon on click
-   themeChange.addEventListener('click', () => {
-     const newTheme = !isDarkMode;
-     document.body.classList.toggle('dark', newTheme);
-   
-     if (newTheme) {
-       themeChange.innerHTML = '<i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Light Mode';
-     } else {
-       themeChange.innerHTML = '<i class="fa-solid fa-sun"></i>&nbsp;&nbsp;Dark Mode';
-     }
-   
-     // Save the new theme preference in local storage
-     localStorage.setItem('darkMode', newTheme);
-   });
+  if (newTheme) {
+    themeChange.innerHTML = '<i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Light Mode';
+  } else {
+    themeChange.innerHTML = '<i class="fa-solid fa-sun"></i>&nbsp;&nbsp;Dark Mode';
+  }
+
+  // Save the new theme preference in local storage
+  localStorage.setItem('darkMode', newTheme);
+}
+
+themeChange.addEventListener('click', () => {
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  const newTheme = !isDarkMode;
+
+  updateThemePreference(newTheme);
+});
+
+// Set initial theme based on local storage
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+updateThemePreference(isDarkMode);
 
 
    //scroll up 

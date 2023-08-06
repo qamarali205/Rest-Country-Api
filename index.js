@@ -70,20 +70,8 @@ searchByCountry.addEventListener('input', (e) =>{
 
   
 //dark aur light mode with local storage 
-const isDarkMode = localStorage.getItem('darkMode') === 'true';
 
-// Update the text and icon based on the saved theme preference
-if (isDarkMode) {
-  document.body.classList.add('dark');
-  themeChange.innerHTML = '<i class="fa-regular fa-moon"></i>&nbsp;&nbsp;Light Mode';
-} else {
-  document.body.classList.remove('dark');
-  themeChange.innerHTML = '<i class="fa-solid fa-sun"></i>&nbsp;&nbsp;Dark Mode';
-}
-
-// Toggle the theme and update text/icon on click
-themeChange.addEventListener('click', () => {
-  const newTheme = !isDarkMode;
+function updateThemePreference(newTheme) {
   document.body.classList.toggle('dark', newTheme);
 
   if (newTheme) {
@@ -94,7 +82,18 @@ themeChange.addEventListener('click', () => {
 
   // Save the new theme preference in local storage
   localStorage.setItem('darkMode', newTheme);
+}
+
+themeChange.addEventListener('click', () => {
+  const isDarkMode = localStorage.getItem('darkMode') === 'true';
+  const newTheme = !isDarkMode;
+
+  updateThemePreference(newTheme);
 });
+
+// Set initial theme based on local storage
+const isDarkMode = localStorage.getItem('darkMode') === 'true';
+updateThemePreference(isDarkMode);
 
 
 
