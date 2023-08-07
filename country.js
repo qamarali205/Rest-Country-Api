@@ -106,7 +106,7 @@ updateThemePreference(isDarkMode);
    var scrollTab = document.getElementById('scrollTab');
 
    window.addEventListener('scroll', function() {
-     if (window.pageYOffset > 300) {
+     if (window.pageYOffset > 200) {
        scrollTab.classList.add('show');
      } else {
        scrollTab.classList.remove('show');
